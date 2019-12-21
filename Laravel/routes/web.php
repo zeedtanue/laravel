@@ -26,3 +26,11 @@ Route::get('delete/{id}', 'UserProfileController@destroy');
 Route::get('user/edit', 'UserProfileController@edit')->name('user.edit');
 
 Route::post('user/update', 'UserProfileController@update')->name('user.update');
+
+Route::get('company/profile', 'CompanyProfileController@index')->name('company.profile');
+
+Route::get('employee/details', 'EmployeeDetailsController@index')->name('employee.details');
+
+Route::get('company/edit', 'CompanyProfileController@edit')->name('company.edit');
+
+Route::post('company/update', 'CompanyProfileController@update')->name('company.update');
