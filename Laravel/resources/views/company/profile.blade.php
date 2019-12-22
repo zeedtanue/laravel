@@ -2,12 +2,7 @@
 
 @section('stylesheets')
 
-<style type="text/css">
 
-.profile-image{
-    width: 150px;
-}
-</style>
 
 @endsection
 
@@ -35,7 +30,7 @@
                     </h3>
                     <hr>
                     
-                    @if(count($companies)>0)
+                    @if(!empty($companies) && count($companies) > 0) 
                         @foreach($companies as $company)
                         <div class="card ">
                             <div class="card-header">
@@ -67,14 +62,11 @@
 
 
                         @endforeach
-                        {{$companies->links()}}
-
-
-                    @else
-                        <p>No Companies under your profile.</p>
-
-
+                        
                     @endif
+
+
+
 
                                         
                     
@@ -87,3 +79,10 @@
 </div>
 
 @endsection
+
+<!--@if(count($companies)>0)-->
+<!--                    @else
+                        <p>No Companies under your profile.</p>
+
+
+                    @endif -->

@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use DB;
 use App\Company;
+use App\Models\User;
 
 
 class CompanyProfileController extends Controller
@@ -27,7 +28,12 @@ class CompanyProfileController extends Controller
      */
     public function index()
     {
-        $companies= Company::orderBy('name', 'desc')->paginate(5);
+        //Showing companies under user
+       // $companies= Company::orderBy('name', 'desc')->paginate(5);
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        $companies=$user->company;
+        
         return view('company.profile')->with('companies', $companies);
     }
 
@@ -54,6 +60,8 @@ class CompanyProfileController extends Controller
             $company->industry =$request->input('industry');
             $company->address =$request->input('address');
             $company->details =$request->input('details');
+
+            $company->user_id= auth()->user()->id;
         
             $company->save();
 

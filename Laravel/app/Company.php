@@ -10,4 +10,11 @@ class Company extends Model
     protected $table='companies';
     //primary keys
     protected $primaryKey='id';
+
+    //relation with User Model
+    
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }
+
