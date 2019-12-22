@@ -29,7 +29,7 @@ class CompanyProfileController extends Controller
     public function index()
     {
         //Showing companies under user
-       // $companies= Company::orderBy('name', 'desc')->paginate(5);
+       
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
         $companies=$user->company;
