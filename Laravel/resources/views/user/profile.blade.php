@@ -13,11 +13,7 @@
 
 @section('content')
 <div class="container">
-    @if(session('success'))
-        <div class="alert alert-success" role="alert">
-            {{session('success')}}
-        </div>
-    @endif
+    
     <div class="row justify-content-center">
         <div class="col-sm-10">
 

@@ -70,8 +70,9 @@ class UserProfileController extends Controller
                 $user->email=$request['email'];
                 $user->save();
 
-                $request->session()->flash('success', 'Your details have been changed');
-                return view('user.profile');
+                
+                //redirecting to user profile
+                return redirect('/user/profile')->with('success','Profile updated');
             }
 
             

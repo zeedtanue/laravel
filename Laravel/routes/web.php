@@ -31,6 +31,12 @@ Route::get('company/profile', 'CompanyProfileController@index')->name('company.p
 
 Route::get('employee/details', 'EmployeeDetailsController@index')->name('employee.details');
 
-Route::get('company/edit', 'CompanyProfileController@edit')->name('company.edit');
+Route::get('/company/edit/{id}', 'CompanyProfileController@edit')->name('company.edit');
 
-Route::post('company/update', 'CompanyProfileController@update')->name('company.update');
+Route::post('company/update/{id}', 'CompanyProfileController@update')->name('company.update');
+
+Route::get('company/create', 'CompanyProfileController@create')->name('company.create');
+
+Route::post('company/store', 'CompanyProfileController@store')->name('company.store');
+
+Route::get('company/delete/{id}', 'CompanyProfileController@delete');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use DB;
+use App\Company;
 
 
 class CompanyProfileController extends Controller
@@ -26,35 +27,92 @@ class CompanyProfileController extends Controller
      */
     public function index()
     {
-        return view('company.profile');
+        $companies= Company::orderBy('name', 'desc')->paginate(5);
+        return view('company.profile')->with('companies', $companies);
     }
 
-    public function edit(){
-        if(Auth::user()){
-            $user= (Auth::user()->id);
+    public function create(){
+        return view('company.create');
+    }
 
-            if ($user){
-                return view('company.edit');
-            }else{
-                return redirect()->back();
-            }
-            
-        }else{
-            return redirect()->back();
+
+
+    public function store(Request $request){
+        //validation for form
+        $validate= $request->validate([
+            'name' => 'required|min:2|max:140',
+            'industry' => 'required|min:2|max:140',
+            'address' => 'required|min:2|max:140',
+            'details' => 'required|min:2'
+        ]);
+
+        //saving form
+
+        if($validate){
+            $company=new Company;
+            $company->name =$request->input('name');
+            $company->industry =$request->input('industry');
+            $company->address =$request->input('address');
+            $company->details =$request->input('details');
+        
+            $company->save();
+
+        //redirecting to company profile
+            return redirect('/company/profile')->with('success','Company details updated');
         }
-
     }
 
-    public function update(){
-
-    }
-
-
-    public function delete(){
+    public function edit($id){
+        $companies= Company::find($id);
+        //return $company;
+        return view('company.edit')
+                        ->with('companies', $companies);
         
     }
+
     
 
+    public function update(Request $request, $id){
+        //validation for form
+        $validate= $request->validate([
+            'name' => 'required|min:2|max:140',
+            'industry' => 'required|min:2|max:140',
+            'address' => 'required|min:2|max:140',
+            'details' => 'required|min:2'
+        ]);
+
+        //saving form
+
+        if($validate){
+            $company=Company::find($id);
+            $company->name =$request->input('name');
+            $company->industry =$request->input('industry');
+            $company->address =$request->input('address');
+            $company->details =$request->input('details');
+        
+            $company->save();
+
+        //redirecting to company profile
+            return redirect('/company/profile')->with('success','Company details updated');
+        }
+
+        
+    }
+
+    public function delete($id){
+        $companies= Company::find($id);
+        $companies->delete();
+        return redirect('/company/profile')->with('success','Company deleted');
+        
+
+    }
+    
+/*
+Company::table('companies')->where('id',$id)->delete();
+  
+        return redirect('/company/profile')
+                        ->with('success','Company deleted successfully');
+*/
     
 
     
