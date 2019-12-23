@@ -6,6 +6,8 @@ use Auth;
 use Illuminate\Http\Request;
 use DB;
 use App\Employee;
+use App\Company;
+use App\Models\User;
 
 
 class EmployeeDetailsController extends Controller
@@ -27,7 +29,11 @@ class EmployeeDetailsController extends Controller
      */
     public function index()
     {
-        $employees =Employee::all();
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        $employees=$user->employee;
+
+
         return view('employee.details')->with('employees',$employees);
     }
 
@@ -39,7 +45,7 @@ class EmployeeDetailsController extends Controller
 
     public function store(Request $request){
         //validation for form
-
+        
         $validate= $request->validate([
             'name' => 'required|min:2|max:140',
             'position' => 'required|min:2|max:140',
@@ -50,15 +56,14 @@ class EmployeeDetailsController extends Controller
 
         //saving form
 
-        if($validate){
-            
+        if($validate){            
             $employee=new Employee;
             $employee->name =$request->input('name');
+            $employee->company_name =$request->input('company_name');
             $employee->position =$request->input('position');
             $employee->salary =$request->input('salary');
             $employee->joining_date =$request->input('joining_date');
-
-            //$employee->user_id= auth()->user()->id;
+            $employee->user_id= auth()->user()->id;
         
             $employee->save();
 
@@ -97,7 +102,8 @@ class EmployeeDetailsController extends Controller
             $employee->salary =$request->input('salary');
             $employee->joining_date =$request->input('joining_date');
 
-            //$employee->user_id= auth()->user()->id;
+            
+            
         
             $employee->save();
 

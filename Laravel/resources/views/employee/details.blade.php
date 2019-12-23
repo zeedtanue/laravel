@@ -16,12 +16,12 @@
 
 <div class="container">
   <div class="row">
-    <h3>
+    <h3 class="col ">
       Employee Details
     </h3>
 
     <a href="/employee/create">
-      <button class="btn btn-primary float-right ">
+      <button class="col px-md-5 btn btn-primary float-right ">
         Add New Employee
       </button>
     </a> 
@@ -32,6 +32,7 @@
       <tr>
       
         <th scope="col">Name</th>
+        <th scope="col">Company Name</th>
         <th scope="col">Position</th>
         <th scope="col">Salary</th>
         <th scope="col">Joining Date</th>
@@ -44,6 +45,7 @@
       @foreach($employees as $employee)
         <tbody>
           <td>{{$employee->name}} </td>
+          <td>{{$employee->company_name}} </td>
           <td>{{$employee->position}} </td>
           <td>{{$employee->salary}} </td>
           <td>{{$employee->joining_date}} </td>

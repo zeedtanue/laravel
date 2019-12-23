@@ -63,7 +63,7 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('company.profile') }}">Your Company</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('employee.details') }}">Employee Details</a>
+                                    <a class="dropdown-item" href="/employee/details">Your Employees</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

@@ -16,6 +16,10 @@
                             {{Form::text('name','',['class'=>'form-control','placeholder'=>'Name of the Employee'])}}
                         </div>
 
+                        <div class="form-group row">
+                            {{Form::label('company_name','Company Name')}}
+                            {{Form::text('company_name','',['class'=>'form-control','placeholder'=>'Name of the Company'])}}
+                        </div>
 
                         <!-- -->
                         <div class="form-group row">

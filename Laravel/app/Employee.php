@@ -11,7 +11,8 @@ class Employee extends Model
     //primary keys
     protected $primaryKey='id';
 
-    //relation with company Model
-    
-    
+    //relation with user Model
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }

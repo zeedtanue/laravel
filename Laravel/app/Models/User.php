@@ -42,4 +42,9 @@ class User extends Authenticatable
     public function company(){
         return $this->hasMany('App\Company');
     }
+
+    //relation with employee
+    public function employee(){
+        return $this->hasMany('App\Employee');
+    }
 }

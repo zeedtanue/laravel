@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCompanyIdToEmployees extends Migration
+class AddUserIdToEmployees extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class AddCompanyIdToEmployees extends Migration
     {
         Schema::table('employees', function (Blueprint $table) {
             //
+            $table->integer('user_id');
         });
     }
 
@@ -27,6 +28,7 @@ class AddCompanyIdToEmployees extends Migration
     {
         Schema::table('employees', function (Blueprint $table) {
             //
+            $table->dropColumn('user_id');
         });
     }
 }

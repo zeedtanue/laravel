@@ -34,7 +34,11 @@
                         @foreach($companies as $company)
                         <div class="card ">
                             <div class="card-header">
-                                <h3>{{$company->name}}</h3>
+                                <div class="row">
+                                    <h3 class="col">{{$company->name}}</h3>
+                                    
+                                </div>
+                                
                             </div>
                             <!-- Company info  -->
                             <div class="card-body">

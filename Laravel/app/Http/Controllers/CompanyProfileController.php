@@ -115,13 +115,6 @@ class CompanyProfileController extends Controller
 
     }
     
-/*
-Company::table('companies')->where('id',$id)->delete();
-  
-        return redirect('/company/profile')
-                        ->with('success','Company deleted successfully');
-*/
-    
 
     
 }
