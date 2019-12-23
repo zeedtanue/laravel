@@ -68,6 +68,7 @@ class UserProfileController extends Controller
                 $user->last_name=$request['last_name'];
                 $user->username=$request['username'];
                 $user->email=$request['email'];
+                $user->password=$request['password'];
                 $user->save();
 
                 

@@ -57,7 +57,6 @@
                             </div>
                             
                         </div>
-<!--
                         <div class="form-group row">
 
                             <div class="col-md-6">
@@ -73,7 +72,6 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm password" required autocomplete="new-password">
                             </div>
                         </div>
--->
                         
 
                         <div class="form-group row justify-content-center mb-0">
